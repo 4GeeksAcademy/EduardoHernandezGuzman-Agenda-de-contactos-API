@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { Context } from "../store/appContext";
@@ -29,7 +29,7 @@ export const Demo = () => {
 									<br />
 									{item.email}
 								</div>
-								<button className="btn btn-danger" onClick={() => {actions.borrarContacto(item.id)}}>Eliminar contacto</button>
+								{/* <button className="btn btn-danger" onClick={() => {actions.borrarContacto(item.id)}}>Eliminar contacto</button> */}
 
 							</li>
 							
@@ -37,7 +37,7 @@ export const Demo = () => {
 					);
 				})}
 			</ul>
-			<button className="btn btn-danger" onClick={()=> actions.borrarTodosLosContactos()}>Borrar todos los contactos</button>
+			{/* <button className="btn btn-danger" onClick={()=> actions.borrarTodosLosContactos()}>Borrar todos los contactos</button> */}
 
 			{/* <ul className="list-group">
 				{store.demo.map((item, index) => {
