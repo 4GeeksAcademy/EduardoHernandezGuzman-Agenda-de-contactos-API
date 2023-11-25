@@ -102,7 +102,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch("https://playground.4geeks.com/apis/fake/contact/agenda/miagenda", requestOptions)
 					.then(response => response.json())
 					.then(data => setStore({ contacts: data }))
-				setTimeout(() => { location.reload(); }, 1000);
+				setTimeout(() => { location.reload(); }, 1000); //Tengo que buscar solución para este mal arreglo
 			},
 
 			// changeColor: (index, color) => {

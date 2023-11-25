@@ -50,11 +50,7 @@ export const Home = () => {
 
     return (
         <>
-
-			<div className="m-5 p-5 bg-body-tertiary rounded-3 col-8">
-				
-				<h1 className="text-body-emphasis">Formulario para añadir contactos</h1>
-				<div className="mb-4 col-6">
+            <div className="mb-3">
                 <label htmlFor="fullName" className="form-label">Nombre completo</label>
                 <input
                     onChange={(e) => setFullName(e.target.value)}
@@ -65,7 +61,7 @@ export const Home = () => {
                     placeholder="Edward Alexander Crowley"
                 />
             </div>
-            <div className="mb-4 col-6">
+            <div className="mb-3">
                 <label htmlFor="email" className="form-label">Email</label>
                 <input
                     onChange={(e) => setEmail(e.target.value)}
@@ -76,7 +72,7 @@ export const Home = () => {
                     placeholder="aleister@crowley.uk"
                 />
             </div>
-            <div className="mb-4 col-6">
+            <div className="mb-3">
                 <label htmlFor="address" className="form-label">Dirección</label>
                 <input
                     onChange={(e) => setAddress(e.target.value)}
@@ -87,7 +83,7 @@ export const Home = () => {
                     placeholder="Inverness IV2 6XT, Reino Unido"
                 />
             </div>
-            <div className="mb-4 col-6">
+            <div className="mb-3">
                 <label htmlFor="phone" className="form-label">Número de teléfono</label>
                 <input
                     onChange={(e) => setPhone(e.target.value)}
@@ -98,19 +94,16 @@ export const Home = () => {
                     placeholder="666-66666666-66"
                 />
             </div>
-				<div className="d-inline-flex gap-2 mb-5">
-					
-				
-					<button  
-					onClick={() => {nuevoContacto();}} 
-					className="btn btn-outline-secondary btn-lg px-4 rounded-pill" 
-					type="button">
-						Guardar contacto
-					</button>
-				</div>
-				{confirmationMsg && <p>{confirmationMsg}</p>}
-			</div>
-           
+            {confirmationMsg && <p>{confirmationMsg}</p>}
+            <button
+                onClick={() => {
+                    nuevoContacto();
+                }}
+                type="button"
+                className="btn btn-primary"
+            >
+                Guardar contacto
+            </button>
         </>
     );
 };
