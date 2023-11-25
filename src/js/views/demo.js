@@ -37,7 +37,7 @@ export const Demo = () => {
 					);
 				})}
 			</ul>
-			{/* <button className="btn btn-danger" onClick={()=> actions.borrarTodosLosContactos()}>Borrar todos los contactos</button> */}
+			<button className="btn btn-danger" onClick={()=> actions.borrarTodosLosContactos()}>Borrar todos los contactos</button>
 
 			{/* <ul className="list-group">
 				{store.demo.map((item, index) => {

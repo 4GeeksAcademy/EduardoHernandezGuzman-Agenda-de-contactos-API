@@ -91,6 +91,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
+			//Borrar TODOS los contactos de la agenda
+			borrarTodosLosContactos: () => {
+
+				var requestOptions = {
+					method: 'DELETE',
+					redirect: 'follow'
+				};
+
+				fetch("https://playground.4geeks.com/apis/fake/contact/agenda/miagenda", requestOptions)
+					.then(response => response.json())
+					.then(data => setStore({ contacts: data }))
+				setTimeout(() => { location.reload(); }, 1000);
+			},
+
 			// changeColor: (index, color) => {
 			// 	//get the store
 			// 	const store = getStore();
