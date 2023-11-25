@@ -54,7 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	
 				// ] })
 
-				
+
 				//Traer los contactos de la agenda
 				fetch("https://playground.4geeks.com/apis/fake/contact/agenda/miagenda")
 				.then((response)=> response.json())
@@ -74,7 +74,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// 	.then(data => setStore({ contacts: data }))
 			},
 
-			
+			//Borrar un contacto de la agenda
+			borrarContacto: (indexABorrar) => {
+
+				var requestOptions = {
+					method: 'DELETE',
+					redirect: 'follow'
+				};
+
+				fetch("https://playground.4geeks.com/apis/fake/contact/" + indexABorrar, requestOptions)
+					.then(response => response.json())
+					.then(data => setStore({ contacts: data }))
+
+					setTimeout(() => { location.reload(); }, 1000); //Tengo que buscar solución para este mal arreglo
+
+
+			},
 
 			// changeColor: (index, color) => {
 			// 	//get the store
