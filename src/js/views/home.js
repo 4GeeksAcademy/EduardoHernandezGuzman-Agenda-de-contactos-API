@@ -7,6 +7,32 @@ export const Home = () => {
 	const [address, setAddress] = useState("");
 	const [phone, setPhone] = useState("");
 
+    
+    //Creación de un nuevo contacto
+    function nuevoContacto()  {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({
+            "full_name": fullName,
+            "email": email,
+            "agenda_slug": "miagenda",
+            "address": address,
+            "phone": phone
+        });
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+        fetch("https://playground.4geeks.com/apis/fake/contact/", requestOptions)
+            .then(response => response.json())
+            .then(result => console.log(result))
+    }
+
 
 	return (
 		<>
@@ -56,7 +82,7 @@ export const Home = () => {
 			</div>
 			<button 
 				onClick={() => {
-					store.actions.nuevoContacto();
+					nuevoContacto();
 				}} 
 				type="button" 
 				className="btn btn-primary"
