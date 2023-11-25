@@ -99,10 +99,11 @@ export const Home = () => {
 						placeholder="666-66666666-66" />
 				</div>
 
-				<div className="d-inline-flex gap-2 mb-5">
+				<div className="d-inline-flex gap-2">
 					<button
+						style={{marginTop:"3rem"}}
 						onClick={() => { nuevoContacto(); }}
-						className="btn btn-outline-secondary btn-lg px-4 rounded-pill"
+						className="btn btn-outline-secondary btn-lg px-4 rounded-3"
 						type="button">
 						Guardar contacto
 					</button>
@@ -111,7 +112,7 @@ export const Home = () => {
 				<div className="container text-center">
 					<div className="row align-items-start">
 						<div className="col-3">
-							{confirmationMsg && <div style={{ height: "5rem" }} className="alert alert-success d-flex align-items-center" role="alert">
+							{confirmationMsg && <div style={{ height: "5rem", marginTop:"3rem" }} className="alert alert-success d-flex align-items-center" role="alert">
 								<div>
 									{confirmationMsg}
 								</div>
