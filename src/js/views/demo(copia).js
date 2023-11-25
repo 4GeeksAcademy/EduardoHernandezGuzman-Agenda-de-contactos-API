@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
-
-
 import { Context } from "../store/appContext";
 
 import "../../styles/demo.css";
@@ -20,16 +18,9 @@ export const Demo = () => {
 
 						<>
 							<li
-							
 								key={index}
-								className="list-group-item d-flex ">
-
-								<div><svg xmlns="http://www.w3.org/2000/svg" width="86" height="86" fill="currentColor" className="mx-5 bi bi-person-lines-fill" viewBox="0 0 16 16">
-									<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
-								</svg></div>
-
-								<div className="ml-5" >
-
+								className="list-group-item d-flex justify-content-between">
+								<div >
 									{item.full_name}
 									<br />
 									{item.address}
@@ -38,7 +29,7 @@ export const Demo = () => {
 									<br />
 									{item.email}
 								</div>
-								<button style={{marginLeft:"auto"}} className="btn btn-danger" onClick={() => {actions.borrarContacto(item.id)}}>Eliminar contacto</button>
+								<button className="btn btn-danger" onClick={() => {actions.borrarContacto(item.id)}}>Eliminar contacto</button>
 
 							</li>
 							
@@ -46,7 +37,7 @@ export const Demo = () => {
 					);
 				})}
 			</ul>
-			<button style={{marginTop:"3rem"}} className="btn btn-danger" onClick={()=> actions.borrarTodosLosContactos()}>Borrar todos los contactos</button>
+			<button className="btn btn-danger" onClick={()=> actions.borrarTodosLosContactos()}>Borrar todos los contactos</button>
 
 			{/* <ul className="list-group">
 				{store.demo.map((item, index) => {
@@ -72,7 +63,10 @@ export const Demo = () => {
 					);
 				})}
 			</ul> */}
-			
+			<br />
+			<Link to="/">
+				<button className="btn btn-primary">Añadir contacto</button>
+			</Link>
 		</div>
 	);
 };

@@ -16,16 +16,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// ],
 			contacts: [
 				{
-					full_name: "rew",
-					address: "rew",
-					phone: "rwe",
-					email: "rwe"
+					full_name: "",
+					address: "",
+					phone: "",
+					email: ""
 				},
 				{
-					full_name: "rew",
-					address: "rew",
-					phone: "rwe",
-					email: "rwe"
+					full_name: "",
+					address: "",
+					phone: "",
+					email: ""
 				},
 
 			]
@@ -87,6 +87,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ contacts: data }))
 
 					setTimeout(() => { location.reload(); }, 1000); //Tengo que buscar solución para este mal arreglo
+					
 
 
 			},
