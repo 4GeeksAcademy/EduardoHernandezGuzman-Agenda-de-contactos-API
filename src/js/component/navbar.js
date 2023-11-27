@@ -23,7 +23,7 @@ export const Navbar = () => {
 								style={{ textDecoration:"none", fontWeight: 'bold', fontSize: 'larger' }}>Añadir contactos</a>
 							</Link>
 
-							<Link to="/demo">
+							<Link to="/agenda">
 								<a onClick={() => { actions.loadSomeData() }} 
 								className="nav-link active" 
 								style={{ textDecoration: 'none', fontWeight: 'bold', fontSize: 'larger' }}>Ver contactos</a>
