@@ -12,7 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 		background: "white",
 			// 		initial: "white"
 			// 	}
-				
+
 			// ],
 			contacts: [
 				{
@@ -37,7 +37,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// },
 			loadSomeData: () => {
 
-				
+
 				// setStore({ contacts: [
 				// 	{
 				// 		full_name: "CAmbiado",
@@ -51,14 +51,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// 		phone: "nuevo cambio",
 				// 		email: "nuevo cambio"
 				// 	},
-	
+
 				// ] })
 
 
 				//Traer los contactos de la agenda
 				fetch("https://playground.4geeks.com/apis/fake/contact/agenda/miagenda")
-				.then((response)=> response.json())
-				.then((data)=>setStore({ contacts: data }))
+					.then((response) => response.json())
+					.then((data) => setStore({ contacts: data }))
 
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
@@ -68,7 +68,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// 	method: 'GET',
 				// 	redirect: 'follow'
 				//   };
-				  
+
 				//   fetch("https://playground.4geeks.com/apis/fake/contact/agenda/miagenda", requestOptions)
 				// 	.then(response => response.json())
 				// 	.then(data => setStore({ contacts: data }))
@@ -86,8 +86,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(data => setStore({ contacts: data }))
 
-					setTimeout(() => { location.reload(); }, 1000); //Tengo que buscar solución para este mal arreglo
-					
+				setTimeout(() => { location.reload(); }, 1000); //Tengo que buscar solución para este mal arreglo
+
 
 
 			},
@@ -105,6 +105,96 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ contacts: data }))
 				setTimeout(() => { location.reload(); }, 1000); //Tengo que buscar solución para este mal arreglo
 			},
+
+
+			editUser: (contact_id, fullName, phone, address, email) => {
+				console.log("Editando desde flux");
+
+				// Obtener los valores actualizados del formulario
+				const updatedItem = {
+					address: address,
+					agenda_slug: "miagenda",
+					email: email,
+					full_name: fullName,
+					phone: phone,
+					
+				};
+
+				var myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/json");
+
+				var raw = JSON.stringify(updatedItem);
+
+				var requestOptions = {
+					method: 'PUT',
+					headers: myHeaders,
+					body: raw,
+					redirect: 'follow'
+				};
+
+				fetch("https://playground.4geeks.com/apis/fake/contact/" + contact_id, requestOptions)
+					.then(response => response.json())
+					.then(result => console.log(result))
+					.catch(error => console.log('error', error));
+			},
+
+
+
+			// //Editar contacto
+			// editUser: async (item, key) => {
+
+			// 	try {
+
+			// 		const store = getStore()
+
+			// 		const data = {
+			// 			address: store.inputs.addressInput,
+			// 			agenda_slug: "miagenda",
+			// 			email: store.inputs.emailInput,
+			// 			full_name: store.inputs.nameInput,
+			// 			phone: store.inputs.phoneInput
+			// 		}
+
+			// 		if (data.email.length == 0) {
+			// 			let email = store.agenda[key].email
+			// 			data.email = email
+
+			// 		}
+			// 		if (data.phone.length == 0) {
+			// 			let phone = store.agenda[key].phone
+			// 			data.phone = phone
+
+			// 		}
+			// 		if (data.full_name.length == 0) {
+			// 			let name = store.agenda[key].full_name
+			// 			data.full_name = name
+
+			// 		}
+			// 		if (data.address.length == 0) {
+			// 			let address = store.agenda[key].address
+			// 			data.address = address
+			// 		}
+			// 		let id = item.id
+
+			// 		await fetch(`${apiUrl}/${id}`,
+			// 			{
+
+			// 				method: 'PUT',
+			// 				headers: {
+			// 					'Content-type': 'application/json'
+			// 				},
+			// 				body: JSON.stringify(data)
+			// 			}
+			// 		);
+
+
+
+			// 	} catch (e) {
+			// 		console.log("editUser Function Error ===", e)
+			// 	}
+
+			// }
+
 
 			// changeColor: (index, color) => {
 			// 	//get the store

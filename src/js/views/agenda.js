@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 
@@ -10,24 +10,88 @@ import "../../styles/demo.css";
 export const Agenda = () => {
 	const { store, actions } = useContext(Context);
 
-	
+
+	const [fullName, setFullName] = useState("");
+    const [email, setEmail] = useState("");
+    const [address, setAddress] = useState("");
+    const [phone, setPhone] = useState("");
+
 
 	return (
 		<div className="container">
 			<ul className="list-group">
 				{store.contacts.map((item, index) => {
+					console.log(item)
 					return (
 
-						<>
+						<div key={index} >
+							<div className=" col-lg-1 col-md-3 col-sm-6 d-flex iconsContainer " >
+
+								<button className="btn btn-primary" data-bs-toggle="modal" data-bs-target={`#editUser${index}`}>
+									<svg data-bs-target={`#editUser${index}`} xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="bi bi-pencil-fill" viewBox="0 0 16 16">
+										<path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+									</svg>
+
+								</button>
+
+							</div>
+
+
+							<div className="modal fade" id={`editUser${index}`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+								<div className="modal-dialog">
+									<div className="modal-content">
+										<div className="modal-header">
+											<h1 className="modal-title fs-5" id="staticBackdropLabel">Edita tu contacto</h1>
+											<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={() => location.reload(true)}></button>
+										</div>
+
+
+										<div className="modal-body">
+
+
+											<div className="mb-3">
+												<label className="form-label">Full eName</label>
+												<input type="text" placeholder="Full Name" className="form-control editModal" defaultValue={item.full_name} onChange={(event) => setFullName(event.target.value)} required />
+											</div>
+
+											<div className="mb-3">
+												<label className="form-label">Email</label>
+												<input type="text" placeholder="Email" className="form-control editModal" defaultValue={item.email} onChange={(event) => setEmail(event.target.value)} required />
+											</div>
+
+											<div className="mb-3">
+												<label className="form-label">Phone</label>
+												<input type="text" placeholder="Phone" className="form-control editModal" defaultValue={item.phone} onChange={(event) => setPhone(event.target.value)} required />
+											</div>
+
+											<div className="mb-3">
+												<label className="form-label">Address</label>
+												<input type="text" placeholder="Address" className="form-control editModal" defaultValue={item.address} onChange={(event) => setAddress(event.target.value)} required />
+											</div>
+
+											<div className="d-flex">
+												<button style={{ margin: "1rem" }} type="button" className="btn btn-secondary w-50" data-bs-dismiss="modal" onClick={() => location.reload(true)}>Cancelar</button>
+												<button style={{ margin: "1rem" }} onClick={() => actions.editUser(item.id, fullName, phone, address, email)} className="btn btn-primary w-50">Guardar</button>
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+
+
 							<li
 								key={index}
 								className="list-group-item d-flex ">
 
-								<Link to="/editarcontacto">
-									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-										<path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
-									</svg>
-								</Link>
+
+
 
 
 								<div><svg xmlns="http://www.w3.org/2000/svg" width="86" height="86" fill="currentColor" className="mx-5 mt-2 bi bi-person-lines-fill" viewBox="0 0 16 16">
@@ -44,13 +108,13 @@ export const Agenda = () => {
 
 									<br />
 
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
-										<path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-telephone-fill" viewBox="0 0 16 16">
+										<path fillRule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
 									</svg><span className="mx-2">{item.phone}</span>
 
 									<br />
 
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-envelope-fill" viewBox="0 0 16 16">
 										<path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
 									</svg><span className="mx-2">{item.email}</span>
 								</div>
@@ -59,7 +123,7 @@ export const Agenda = () => {
 
 							</li>
 
-						</>
+						</div>
 					);
 				})}
 			</ul>
