@@ -47,7 +47,7 @@ export const Agenda = () => {
 
 
 										<div className="modal-body">
-										<form>
+
 
 											<div className="mb-3">
 												<label className="form-label">Full eName</label>
@@ -71,29 +71,11 @@ export const Agenda = () => {
 
 											<div className="d-flex">
 												<button style={{ margin: "1rem" }} type="button" className="btn btn-secondary w-50" data-bs-dismiss="modal" onClick={() => location.reload(true)}>Cancelar</button>
-												<button
-													style={{ margin: "1rem" }}
-													onClick={() => {
-														
-														if (
-															(!fullName.trim() || !phone.trim() || !address.trim() || !email.trim()) &&
-															(fullName.trim() !== item.full_name || phone.trim() !== item.phone || address.trim() !== item.address || email.trim() !== item.email)
-														) {
-															
-															return;
-														}
-													
-														actions.editUser(item.id, fullName, phone, address, email);
-													}}
-													className="btn btn-primary w-50">
-													Guardar
-												</button>
+												<button style={{ margin: "1rem" }} onClick={() => actions.editUser(item.id, fullName, phone, address, email)} className="btn btn-primary w-50">Guardar</button>
 											</div>
-											</form>
+
 
 										</div>
-
-										
 									</div>
 								</div>
 							</div>
